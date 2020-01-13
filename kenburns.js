@@ -27,11 +27,11 @@ function KenBurns(element) {
   }
 
   canvas.scaleTo = function(scale, duration, ease) {
-    return TweenMax.to(current, duration || 1, {scale: scale, ease: ease || TweenLite.defaultEase, onUpdate: render})
+    return TweenLite.to(current, duration || 1, {scale: scale, ease: ease || TweenLite.defaultEase, onUpdate: render})
   }
 
   canvas.scaleFrom = function(scale, duration, ease) {
-    return TweenMax.from(current, duration || 1, {scale: scale, ease: ease || TweenLite.defaultEase, onUpdate: render})
+    return TweenLite.from(current, duration || 1, {scale: scale, ease: ease || TweenLite.defaultEase, onUpdate: render})
   }
 
   image.src = src
