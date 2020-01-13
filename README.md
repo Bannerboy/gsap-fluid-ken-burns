@@ -2,7 +2,7 @@
 
 Slow image pans can look "jittery". Using canvas can solve it on most browsers and pixel density. This is a handy way to do it.
 
-Example: [demo](demo.html)
+Example: [demo](https://bannerboy.github.io/gsap-fluid-ken-burns/demo.html)
 
 # How it works
 
