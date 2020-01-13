@@ -6,7 +6,7 @@ Example: [demo](demo.html)
 
 # How it works
 
-This script replaces your reference image or div with a canvas. The zoomed image is then drawn canvas
+This script replaces your reference image or div with a canvas. The zoomed image is then drawn in this canvas.
 
 ## How to use
 
@@ -15,7 +15,7 @@ This can be called on a div with a background image, or on an image.
 ```html
 <!-- Import TweenLite/TweenMax if you don't have aldeady -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js'></script>
-<!-- Import the kenburns script --> 
+<!-- Import the kenburns script -->
 <script type="text/javascript" src="kenburns.js"></script>
 ```
 
