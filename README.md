@@ -4,7 +4,7 @@ Slow image pans can look "jittery". Using canvas can solve it on most browsers a
 
 Example: [demo](https://bannerboy.github.io/gsap-fluid-ken-burns/demo.html)
 
-# How it works
+## How it works
 
 This script replaces your reference image or div with a canvas. The zoomed image is then drawn in this canvas.
 
