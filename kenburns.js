@@ -1,6 +1,6 @@
 function KenBurns(element) {
-  var src = element.src || element.style.backgroundImage.match(/\((.*?)\)/)[1].replace(/('|")/g, '')
-  var canvas = document.createElement('canvas')
+  var src = element.style.backgroundImage.match(/\((.*?)\)/)[1].replace(/('|")/g, '')
+  var canvas = element.kenburns = document.createElement('canvas')
   var context = canvas.getContext('2d')
   var pixel = window.devicePixelRatio && window.devicePixelRatio >= 2 ? 2 : 1
   var image = new Image()
@@ -9,16 +9,20 @@ function KenBurns(element) {
   var current = {scale: 1}
 
   image.onload = function() {
-    canvas.style.width = width + "px"
+    canvas.style.width = width + 'px'
     canvas.width = width * pixel
-    canvas.style.height = height + "px"
+    canvas.style.height = height + 'px'
     canvas.height = height * pixel
     canvas.getContext('2d').scale(pixel, pixel)
 
     render()
+
+    element.style.backgroundImage = null
+    element.appendChild(canvas)
   }
 
   function render() {
+    context.clearRect(0, 0, width, height)
     context.save()
     context.translate(width * (1 - current.scale) * 0.5, height * (1 - current.scale) * 0.5)
     context.scale(current.scale, current.scale)
@@ -26,17 +30,15 @@ function KenBurns(element) {
     context.restore()
   }
 
-  canvas.scaleTo = function(scale, duration, ease) {
+  element.scaleTo = function(scale, duration, ease) {
     return TweenLite.to(current, duration || 1, {scale: scale, ease: ease || TweenLite.defaultEase, onUpdate: render})
   }
 
-  canvas.scaleFrom = function(scale, duration, ease) {
+  element.scaleFrom = function(scale, duration, ease) {
     return TweenLite.from(current, duration || 1, {scale: scale, ease: ease || TweenLite.defaultEase, onUpdate: render})
   }
 
   image.src = src
-  element.parentNode.insertBefore(canvas, element)
-  element.parentNode.removeChild(element)
 
-  return canvas
+  return element
 }

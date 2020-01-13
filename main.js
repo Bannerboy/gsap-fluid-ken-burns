@@ -1,7 +1,7 @@
 TweenMax.to('#regular-gsap>*', 5, {scale: 1.1})
 
-var kenburns = document.querySelector('#canvas-kenburns>*')
-kenburns = new KenBurns(kenburns)
+var element = document.querySelector('#canvas-kenburns>*')
+new KenBurns(element)
 
 kenburns.scaleTo(1.1, 5)
 // kenburns.scaleFrom(1.1, 5)

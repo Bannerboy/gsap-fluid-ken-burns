@@ -6,7 +6,14 @@ Example: [demo](https://bannerboy.github.io/gsap-fluid-ken-burns/demo.html)
 
 ## How it works
 
-This script replaces your reference image or div with a canvas. The zoomed image is then drawn in this canvas.
+This script adds a canvas in a div with background image. The zoomed image is then drawn in this canvas, and removed from the css property background image. Here is what it does step by step:
+
+- Create a canvas
+- Place it inside the div
+- Remove the backgroundImage from that div
+- Draw the image onto the canvas
+- Adds `.scaleTo()` and `.scaleFrom()` methods to the div
+- Returns the div
 
 ## How to use
 
@@ -20,18 +27,22 @@ This can be called on a div with a background image, or on an image.
 ```
 
 ```javascript
-// new KenBurns(element)
-var kenburns = new KenBurns(document.getElementById('zoomed-image')) // element can be a div or an image
+// new KenBurns(element) - element must be a div with a background-image
+var element = document.getElementById('zoomed-image')
+new KenBurns(element) // returns the element with added methods to allow chaining
 
-// kenburns.scaleTo(scale, duration = 1, ease = TweenLite.defaultEase)
-kenburns.scaleTo(1.1, 5) // returns a tween
-// kenburns.scaleTo(scale, duration = 1, ease = TweenLite.defaultEase)
-kenburns.scaleFrom(1.1, 5) // returns a tween
+// element.scaleTo(scale, duration = 1, ease = TweenLite.defaultEase)
+element.scaleTo(1.1, 5) // returns a tween
+// element.scaleTo(scale, duration = 1, ease = TweenLite.defaultEase)
+element.scaleFrom(1.1, 5) // returns a tween
+
+element.kenburns // access the canvas added by the script
 ```
 
-- new KenBurns(sourceElement): returns the canvas replacing the source element
-- kenburns.scaleTo(scaleFactor, *duration (optional)*, *ease (optional)*): returns a .to tween
-- kenburns.scaleFrom(scaleFactor, *duration (optional)*, *ease (optional)*): returns a .from tween
+## Known limitations
+
+- This only works for divs with background image
+- It doesn't support transformOrigin: it only scales from and to the center
 
 ## Browser Support
 
